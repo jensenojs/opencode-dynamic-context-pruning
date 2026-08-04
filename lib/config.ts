@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "fs"
 import { join, dirname } from "path"
 import { homedir } from "os"
-import { parse } from "jsonc-parser/lib/esm/main.js"
+import { parse } from "jsonc-parser"
 import type { PluginInput } from "@opencode-ai/plugin"
 
 type Permission = "ask" | "allow" | "deny"
@@ -653,7 +653,7 @@ function showConfigWarnings(
     }, 7000)
 }
 
-const defaultConfig: PluginConfig = {
+export const defaultConfig: PluginConfig = {
     enabled: true,
     autoUpdate: true,
     debug: false,
@@ -693,7 +693,7 @@ const defaultConfig: PluginConfig = {
     strategies: {
         deduplication: {
             enabled: true,
-            protectedTools: [],
+            protectedTools: [...DEFAULT_PROTECTED_TOOLS],
         },
         purgeErrors: {
             enabled: true,

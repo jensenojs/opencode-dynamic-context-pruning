@@ -283,7 +283,18 @@
                             "items": {
                                 "type": "string"
                             },
-                            "default": [],
+                            "default": [
+                                "task",
+                                "skill",
+                                "todowrite",
+                                "todoread",
+                                "compress",
+                                "batch",
+                                "plan_enter",
+                                "plan_exit",
+                                "write",
+                                "edit"
+                            ],
                             "description": "Tool names or wildcard patterns excluded from deduplication. Supports glob wildcards: * matches any characters, ? matches a single character (e.g., \"mcp_*\", \"my_tool_?\")"
                         }
                     }
