@@ -6,7 +6,6 @@ import {
     buildPriorityMap,
     buildToolIdList,
     injectCompressNudges,
-    injectExtendedSubAgentResults,
     injectMessageIds,
     prune,
     stripHallucinations,
@@ -129,13 +128,6 @@ export function createChatMessageTransformHandler(
         syncToolCache(state, config, logger, output.messages)
         buildToolIdList(state, output.messages)
         prune(state, logger, config, output.messages)
-        await injectExtendedSubAgentResults(
-            client,
-            state,
-            logger,
-            output.messages,
-            config.experimental.allowSubAgents,
-        )
         const compressionPriorities = buildPriorityMap(config, state, output.messages)
         prompts.reload()
         injectCompressNudges(
